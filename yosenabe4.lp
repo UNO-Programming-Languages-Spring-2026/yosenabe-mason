@@ -36,4 +36,13 @@ before(X1,Y1,X2,Y2) :- number(X1,Y1,_), number(X2,Y2,_), X1 = X2, Y1 < Y2.
 %No paths can share a cell
 :- before(X1,Y1,X2,Y2), path(X1,Y1,PX,PY), path(X2,Y2,PX,PY).
 
+
+%Q4 part:
+%num moved to an area must sum to goal 
+area_sum(A,S) :-goal(A,_), S = #sum {N,X,Y : target(X,Y,XX,YY), number(X,Y,N), area(XX,YY,A)}.
+:- goal(A,G), area_sum(A,S), S != G.
+
+
+
+
 #show target/4.
